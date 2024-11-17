@@ -8,6 +8,8 @@
 <body>
     <div id="myApp">
         <h1>Batman quotes</h1>
+        <button @:click="toggleAuthor">Toggle Author</button>
+        <button @:click="toggleAuthor">Add quote</button>
         <hr>
         <ul>
             <li v-for="quote in quotes">{{ quote.author }}</li>
@@ -15,7 +17,7 @@
         <ul>
             <li v-for="({quote, author}) in quotes">
                 <span>{{ quote }}</span>
-                <blockquote>{{ author }}</blockquote>
+                <blockquote v-if="showAuthor">{{ author }}</blockquote>
             </li>
         </ul>
     </div>

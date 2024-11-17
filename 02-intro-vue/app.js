@@ -7,12 +7,28 @@ const quotes = [
     { quote: 'Yes, father. I shall become a bat.', author: 'Bruce Wayne/Batman, Batman: Year One' },
 ]
 
-const {createApp } = Vue;
+const {createApp, ref } = Vue;
 
 const app = createApp({
     setup() {
+        // Variable reactiva
+        const showAuthor = ref(true);
+
+        const toggleAuthor = () => {
+            showAuthor.value = !showAuthor.value;
+        }
+
+        const addQuote = () => {
+
+        }
+
         return {
-            quotes
+            // Variables
+            quotes,
+            showAuthor,
+            // Funciones
+            toggleAuthor,
+            addQuote,
         }
     }
 });
