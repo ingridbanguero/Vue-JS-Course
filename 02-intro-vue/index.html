@@ -7,13 +7,19 @@
 </head>
 <body>
     <div id="myApp">
-        <h1>Batman quotes</h1>
+        <!-- Propiedad computada -->
+        <h1>Batman quotes {{ totalQuotes }}</h1>
+
+        <input 
+            type="text" 
+            placeholder="Add quote"
+            @keypress.enter="addQuote"
+        >
+
+        <!-- Eventos -->
         <button @:click="toggleAuthor">Toggle Author</button>
-        <button @:click="toggleAuthor">Add quote</button>
+        <button @:click="addQuote">Add any quote</button>
         <hr>
-        <ul>
-            <li v-for="quote in quotes">{{ quote.author }}</li>
-        </ul>
         <ul>
             <li v-for="({quote, author}) in quotes">
                 <span>{{ quote }}</span>
