@@ -14,6 +14,8 @@ const app = createApp({
         // Variable reactiva
         const showAuthor = ref(true);
         const quotes = ref(originalQuotes); // valor inicial
+        const newMessage = ref('');
+
         const totalQuotes = computed(() => { // recibe una funcion
             return quotes.value.length;
         }); 
@@ -24,17 +26,18 @@ const app = createApp({
 
         const addQuote = () => {
             quotes.value.unshift({ // se aplica el value porq es una variable reactiva
-                quote: "Hola mundo",
+                quote: newMessage.value,
                 author: "Ingrid Banguero"
             })
-            console.log(quotes); // es una ref
-            console.log(quotes.value); // contiene el arreglo
+            
+            newMessage.value = ''; // Limpiar el valor
         }
 
         return {
             // Variables
             showAuthor,
             quotes,
+            newMessage,
             // Funciones
             toggleAuthor,
             addQuote,
