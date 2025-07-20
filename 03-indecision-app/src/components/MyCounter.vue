@@ -2,7 +2,6 @@
   <section>
     <h3>Counter: {{ counter }}</h3>
     <h3>Square: {{ squareCounter }}</h3>
-    <h4>{{ text }}</h4>
     <div>
       <button class="btn" @click="counter++">+1</button>
       <button class="btn" @click="counter--">-1</button>
@@ -11,8 +10,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
-
 /* Forma comun en JS
 const props = defineProps<Props>();
   value: { type: Number, required: true },
@@ -20,6 +17,8 @@ const props = defineProps<Props>();
 });
 */
 
+/* Antes de usar composables
+import { computed, ref } from 'vue';
 interface Props {
   value: number;
   text: string;
@@ -29,7 +28,11 @@ const props = defineProps<Props>();
 
 const counter = ref(props.value);
 const text = ref(props.text);
-const squareCounter = computed(() => counter.value * counter.value);
+const squareCounter = computed(() => counter.value * counter.value);*/
+
+// Con composables
+import { useCounter } from '@/composables/useCounter';
+const { counter, squareCounter } = useCounter(10);
 </script>
 
 <style scoped>
